@@ -40,14 +40,16 @@ export function CityScene({
     >
       <div className="city-topbar">
         <button type="button" className="back-btn" onClick={onBack}>
-          ← Back to ocean
+          ← Back to map
         </button>
       </div>
 
       <div className="city-card">
         <div className="city-card-head">
           <div>
-            <p className="city-eyebrow">{city.symbol} Island report</p>
+            <p className="city-eyebrow">
+              {city.symbol} Air & heat report
+            </p>
             <h2>{city.name}</h2>
             <p className="city-tagline">{city.tagline}</p>
           </div>
@@ -79,7 +81,7 @@ export function CityScene({
           ))}
         </div>
 
-        {loading && <div className="loading">Reading the sky over {city.name}…</div>}
+        {loading && <div className="loading">Checking conditions over {city.name}…</div>}
         {error && <div className="error">{error}</div>}
 
         {env && !loading && (

@@ -43,8 +43,8 @@ export function BrickAlley({ onComplete }: { onComplete?: () => void }) {
       <div className="alley-vignette" aria-hidden />
 
       <div className="alley-caption">
-        <p className="alley-eyebrow">Phase 2 · Alley beat</p>
-        <h1>Noir alley</h1>
+        <p className="alley-eyebrow">AQ-Tracker</p>
+        <h1>Pakistan: Air & Heat</h1>
         <p>{captionFor(beat)}</p>
       </div>
 

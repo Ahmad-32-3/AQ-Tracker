@@ -1,13 +1,14 @@
 /**
- * Phase 1 city marks — old-school ink landmarks on parchment.
+ * Phase 1–3 city marks — old-school ink landmarks on parchment.
  * Lahore → crow's nest · Karachi → lighthouse · Islamabad → mountain shrine
- * Triangle layout; glow per city. Clicks come in Phase 3.
  */
+
+import type { CityId } from '../data/cities'
 
 const INK = '#1a100a'
 
 type Mark = {
-  id: 'lahore' | 'karachi' | 'islamabad'
+  id: CityId
   name: string
   mark: string
   glow: string
@@ -21,7 +22,7 @@ const MARKS: Mark[] = [
     name: 'Lahore',
     mark: "Crow's nest",
     glow: '#e8a05a',
-    top: '26%',
+    top: '27%',
     left: '50%',
   },
   {
@@ -42,29 +43,34 @@ const MARKS: Mark[] = [
   },
 ]
 
-export function MapCityMarks() {
+export function MapCityMarks({
+  onSelect,
+  disabled = false,
+}: {
+  onSelect?: (id: CityId) => void
+  disabled?: boolean
+}) {
   return (
     <div className="map-city-marks" aria-label="City landmarks">
       {MARKS.map((m) => (
-        <div
+        <button
           key={m.id}
+          type="button"
           className="map-city-mark"
           style={{ top: m.top, left: m.left, ['--mark-glow' as string]: m.glow }}
+          onClick={() => onSelect?.(m.id)}
+          disabled={disabled || !onSelect}
+          aria-label={`Open ${m.name} air and heat report`}
         >
           <div className="map-city-mark-glow" aria-hidden />
-          <svg
-            className="map-city-mark-art"
-            viewBox="0 0 160 150"
-            role="img"
-            aria-label={`${m.name}: ${m.mark}`}
-          >
+          <svg className="map-city-mark-art" viewBox="0 0 160 150" aria-hidden>
             <IslandBase />
             {m.id === 'lahore' && <CrowsNestIcon />}
             {m.id === 'karachi' && <LighthouseIcon />}
             {m.id === 'islamabad' && <MountainShrineIcon />}
           </svg>
           <span className="map-city-mark-label">{m.name}</span>
-        </div>
+        </button>
       ))}
     </div>
   )

@@ -1,12 +1,14 @@
 type FogPhase = 'thick' | 'clearing' | 'gone' | 'rolling-in'
 
+export type { FogPhase }
+
 type Props = {
   phase: FogPhase
 }
 
 /**
- * Cloud banks that slide in from left/right and exit the same way.
- * No text — pure motion cover for scene changes.
+ * Black smoke banks that slide in from left/right and exit the same way.
+ * Cover for map ↔ city transitions.
  */
 export function FogOverlay({ phase }: Props) {
   if (phase === 'gone') return null

@@ -23,26 +23,20 @@ Source: full chat vision (detective alley → coffee map → islands → metrics
 
 ## Remaining phases (execute one at a time)
 
-### Phase 1 — Coffee map screen *(look mostly done)*
-Parchment + décor + 3 ink landmarks (Lahore / Karachi / Islamabad).  
-Clicks come later (Phase 3).
+### Phase 1 — Coffee map screen ✅
+Parchment + décor + 3 ink landmarks (Lahore / Karachi / Islamabad).
 
-### Phase 2 — Alley beat → map-on-wall *(next — build before zoom)*
-**Do not full-screen swap yet.** Stay in the alley and stage this beat:
+### Phase 2 — Alley beat → smoke → zoom → map ✅
+Walk → gutter smoke → wall map → engulf → zoom → coffee map reveal.
 
-1. Wall scrolls **~5 seconds**, then **eases to a stop** (no infinite loop).
-2. A **gutter/drain** on the floor emits **black smoky clouds**.
-3. When the **swinging lamp beam** cuts through the smoke, a **coffee map poster** stuck to the **brick wall** becomes readable (lit reveal).
-4. Hold on that beat. **Zoom into the map** is a follow-up step after this lands.
+### Phase 3 — Island → clouds → metrics ✅
+Click landmark → **black fog** → city metrics (Open-Meteo + A1–A12). Back returns to map through fog.
 
-### Phase 3 — Island → clouds → metrics
-Click island → **cloud fog** → city metrics (Open-Meteo + A1–A12).
+### Phase 4 — Map is home ✅
+After intro, **map is the landing page**. Back from city → **map** (not alley). Dev phase bar removed.
 
-### Phase 4 — Map is home
-After intro, **map is the landing page**. Back from city → **map** (not alley).
-
-### Phase 5 — Replay intro
-Top-left **Replay** replays alley → wall-map → (later) zoom.
+### Phase 5 — Replay intro ✅
+Top-left **Replay intro** replays alley → smoke → zoom → map.
 
 ### Phase 6 — Polish (optional)
 Look-up / map-on-wall beat refinements, magnifier, art upgrades, reduced-motion.

@@ -36,7 +36,7 @@ body,
 
 body {
   min-height: 100vh;
-  background: var(--ocean-deep);
+  background: #2e1c12;
 }
 
 button {
@@ -1188,7 +1188,7 @@ h3 {
   bottom: 1rem;
   transform: translateX(-50%);
   z-index: 60;
-  display: flex;
+  display: none; /* Phase 4 — map is home; use .replay-btn instead */
   align-items: center;
   gap: 0.45rem;
   padding: 0.4rem 0.55rem;
@@ -1196,6 +1196,37 @@ h3 {
   border: 1px solid rgba(232, 200, 150, 0.25);
   border-radius: 999px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.replay-btn {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 55;
+  padding: 0.45rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid rgba(232, 180, 110, 0.55);
+  background: rgba(58, 38, 24, 0.88);
+  color: #fff4e4;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  box-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(20, 10, 5, 0.25);
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.replay-btn:hover,
+.replay-btn:focus-visible {
+  background: rgba(72, 46, 28, 0.94);
+  border-color: rgba(232, 160, 90, 0.75);
+  box-shadow:
+    0 3px 14px rgba(0, 0, 0, 0.4),
+    0 0 16px rgba(232, 160, 90, 0.18);
+  outline: none;
 }
 
 .phase-bar-label {
@@ -1437,12 +1468,16 @@ h3 {
 }
 
 .coffee-map-header {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 3;
   text-align: center;
-  padding: 1.75rem 1.25rem 0.5rem;
+  padding: 1.1rem 1.25rem 0;
   color: #f0e0c4;
   text-shadow: 0 2px 10px rgba(20, 8, 4, 0.55);
+  pointer-events: none;
 }
 
 .coffee-map-eyebrow {
@@ -1455,16 +1490,18 @@ h3 {
 }
 
 .coffee-map-header h1 {
-  margin-top: 0.3rem;
-  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  margin: 0;
+  font-size: clamp(1.55rem, 4.2vw, 2.25rem);
   color: #fff4e4;
+  line-height: 1.15;
 }
 
 .coffee-map-sub {
-  margin: 0.4rem auto 0;
+  margin: 0.35rem auto 0;
   max-width: 28rem;
   color: #e0c8a4;
   font-weight: 600;
+  font-size: 0.95rem;
 }
 
 .coffee-map-phase {
@@ -1497,6 +1534,34 @@ h3 {
   align-items: center;
   width: min(200px, 38vw);
   pointer-events: auto;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.map-city-mark:hover .map-city-mark-art,
+.map-city-mark:focus-visible .map-city-mark-art {
+  filter: drop-shadow(0 5px 0 rgba(20, 10, 5, 0.28))
+    drop-shadow(0 0 12px color-mix(in srgb, var(--mark-glow) 55%, transparent));
+  transform: translateY(-2px);
+}
+
+.map-city-mark:focus-visible {
+  outline: none;
+}
+
+.map-city-mark:focus-visible .map-city-mark-label {
+  border-color: color-mix(in srgb, var(--mark-glow) 70%, #fff);
+}
+
+.map-city-mark:disabled {
+  cursor: default;
+  opacity: 0.85;
 }
 
 .map-city-mark-glow {
@@ -1526,6 +1591,7 @@ h3 {
   width: 100%;
   height: auto;
   filter: drop-shadow(0 5px 0 rgba(20, 10, 5, 0.28));
+  transition: filter 0.25s ease, transform 0.25s ease;
 }
 
 .map-city-mark-label {
@@ -1789,25 +1855,25 @@ h3 {
   inset: 0;
   background: linear-gradient(
     90deg,
-    rgba(236, 232, 224, 0.97) 0%,
-    rgba(236, 232, 224, 0.88) 55%,
-    rgba(236, 232, 224, 0.15) 100%
+    rgba(8, 6, 5, 0.97) 0%,
+    rgba(12, 10, 9, 0.9) 55%,
+    rgba(8, 6, 5, 0.12) 100%
   );
 }
 
 .fog-bank--right .fog-sheet {
   background: linear-gradient(
     270deg,
-    rgba(236, 232, 224, 0.97) 0%,
-    rgba(236, 232, 224, 0.88) 55%,
-    rgba(236, 232, 224, 0.15) 100%
+    rgba(8, 6, 5, 0.97) 0%,
+    rgba(12, 10, 9, 0.9) 55%,
+    rgba(8, 6, 5, 0.12) 100%
   );
 }
 
 .cloud {
   position: absolute;
-  color: #efebe3;
-  filter: drop-shadow(0 8px 18px rgba(180, 175, 165, 0.35));
+  color: #1a1614;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.55));
   opacity: 0.95;
 }
 
@@ -1820,12 +1886,13 @@ h3 {
   width: 72%;
   top: 34%;
   left: -6%;
-  color: #f5f1ea;
+  color: #0c0a09;
 }
 .fog-bank--left .cloud--c {
   width: 64%;
   bottom: 8%;
   left: 8%;
+  color: #141210;
 }
 
 .fog-bank--right .cloud--d {
@@ -1833,19 +1900,21 @@ h3 {
   top: 10%;
   right: 2%;
   left: auto;
+  color: #12100e;
 }
 .fog-bank--right .cloud--e {
   width: 76%;
   top: 38%;
   right: -8%;
   left: auto;
-  color: #f5f1ea;
+  color: #080706;
 }
 .fog-bank--right .cloud--f {
   width: 66%;
   bottom: 6%;
   right: 4%;
   left: auto;
+  color: #1a1614;
 }
 
 /* Covering at rest (boot) */
@@ -1913,17 +1982,45 @@ h3 {
 /* ——— City scene ——— */
 
 .city-scene {
+  position: relative;
   min-height: 100vh;
   min-height: 100dvh;
   padding: 1rem 1rem 2rem;
-  background:
-    radial-gradient(ellipse 70% 40% at 50% 0%, color-mix(in srgb, var(--accent) 22%, #f7ebd6), transparent),
-    linear-gradient(180deg, #f7ebd6 0%, #e8d4b0 55%, #d5e8f0 100%);
+  background-color: #2e1c12;
+  background-image:
+    url('/textures/crumpled-paper.png?v=5'),
+    radial-gradient(
+      ellipse 70% 42% at 50% 0%,
+      color-mix(in srgb, var(--accent) 30%, #b89568),
+      transparent 68%
+    ),
+    radial-gradient(ellipse 80% 70% at 50% 48%, #b89568 0%, #9a7348 42%, #7a5535 72%, #5c3d28 100%);
+  background-size: cover, auto, auto;
+  background-position: center, center, center;
+  background-blend-mode: multiply, soft-light, normal;
   opacity: 0;
   transform: scale(1.28);
   transform-origin: 50% 18%;
   /* Hidden under fog until reveal — no slow fade on metrics */
   transition: none;
+}
+
+.city-scene::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 55% at 82% 12%, rgba(70, 35, 15, 0.35), transparent 58%),
+    radial-gradient(ellipse 60% 50% at 8% 82%, rgba(55, 28, 12, 0.32), transparent 55%),
+    radial-gradient(ellipse 82% 78% at 50% 48%, transparent 50%, rgba(50, 25, 10, 0.28) 100%);
+  mix-blend-mode: multiply;
+  z-index: 0;
+}
+
+.city-scene > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* Ultra-fast zoom snap that reveals the metrics card */
@@ -1944,13 +2041,13 @@ h3 {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  background: rgba(255, 248, 238, 0.9);
-  border: 2px solid color-mix(in srgb, var(--ink) 12%, transparent);
+  background: rgba(255, 244, 228, 0.92);
+  border: 2px solid rgba(40, 22, 12, 0.16);
   border-radius: 999px;
   padding: 0.45rem 0.95rem;
   font-weight: 800;
-  color: var(--ink);
-  box-shadow: 0 4px 0 rgba(28, 42, 46, 0.12);
+  color: #2a1810;
+  box-shadow: 0 4px 0 rgba(40, 22, 12, 0.14);
   transition: transform 0.15s ease;
 }
 
@@ -1963,11 +2060,11 @@ h3 {
 .city-card {
   max-width: 720px;
   margin: 0 auto;
-  background: color-mix(in srgb, var(--foam) 94%, white);
+  background: color-mix(in srgb, #fff4e4 92%, #e8c9a0);
   border-radius: 1.4rem;
   padding: 1.2rem 1.25rem 1.4rem;
-  border: 2px solid color-mix(in srgb, var(--ink) 8%, transparent);
-  box-shadow: 0 12px 32px var(--shadow);
+  border: 2px solid rgba(40, 22, 12, 0.18);
+  box-shadow: 0 12px 32px rgba(30, 16, 8, 0.28);
 }
 
 .city-card-head {

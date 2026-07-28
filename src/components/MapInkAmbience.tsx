@@ -584,7 +584,7 @@ export function MapInkAmbience() {
         </g>
 
         {/* Pirate compass — island triangle gap, sized to read */}
-        <g transform="translate(500, 400) scale(0.92)">
+        <g transform="translate(500, 445) scale(0.92)">
           <PirateCompass />
         </g>
 

@@ -1,10 +1,17 @@
 import { MapInkAmbience } from './MapInkAmbience'
 import { MapCityMarks } from './MapCityMarks'
+import type { CityId } from '../data/cities'
 
 /**
- * Phase 1 — coffee parchment + edge décor + thematic city landmarks.
+ * Coffee parchment + edge décor + clickable city landmarks.
  */
-export function CoffeeMap() {
+export function CoffeeMap({
+  onSelectCity,
+  selecting = false,
+}: {
+  onSelectCity?: (id: CityId) => void
+  selecting?: boolean
+}) {
   return (
     <div className="coffee-map">
       <svg className="coffee-filters" aria-hidden>
@@ -106,15 +113,12 @@ export function CoffeeMap() {
       <div className="parchment-edge" aria-hidden />
 
       <MapInkAmbience />
-      <MapCityMarks />
+      <MapCityMarks onSelect={onSelectCity} disabled={selecting} />
 
       <header className="coffee-map-header">
-        <p className="coffee-map-eyebrow">Phase 1 · Landmarks</p>
-        <h1>Coffee-dipped map</h1>
-        <p className="coffee-map-sub">Three cities · old-school ink marks</p>
+        <h1>Pakistan: Air & Heat</h1>
+        <p className="coffee-map-sub">Tap a landmark for advice</p>
       </header>
-
-      <p className="coffee-map-phase">Icons on · clicks come in Phase 3</p>
     </div>
   )
 }
