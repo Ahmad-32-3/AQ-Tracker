@@ -6,9 +6,11 @@ Built with React + Vite + TypeScript. Weather and air quality from [Open-Meteo](
 
 ## Intro clip
 
-Clip of the full alley introduction (gutter smoke, zoom, map reveal):
+Clip of the full alley introduction (gutter smoke, zoom, map reveal).
 
-[Watch the intro](docs/AQ-Tracker-intro.mp4)
+<video src="https://github.com/Ahmad-32-3/AQ-Tracker/raw/main/docs/AQ-Intro.mp4" controls width="720"></video>
+
+[Open the intro clip](docs/AQ-Intro.mp4)
 
 ## Try it
 
