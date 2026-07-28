@@ -4,6 +4,12 @@ Noir alley intro into a coffee parchment map, then live air & heat advice for **
 
 Built with React + Vite + TypeScript. Weather and air quality from [Open-Meteo](https://open-meteo.com/).
 
+## Intro clip
+
+Clip of the full alley introduction (gutter smoke, zoom, map reveal):
+
+[Watch the intro](docs/AQ-Tracker-intro.mp4)
+
 ## Try it
 
 ```bash
